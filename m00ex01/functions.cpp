@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   contact.cpp                                        :+:    :+:            */
+/*   functions.cpp                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tclement <tclement@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/07/28 18:46:42 by tclement      #+#    #+#                 */
-/*   Updated: 2020/08/01 15:00:29 by tclement      ########   odam.nl         */
+/*   Created: 2020/08/05 12:50:26 by tclement      #+#    #+#                 */
+/*   Updated: 2020/08/05 14:13:35 by tclement      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "contact.hpp"
+#include "Contact.class.hpp"
 
-contact::contact (void)
-{
-    return;
-}
-
-contact::~contact (void)
-{
-    return;
-}
-
-contact    add()
+Contact     add()
 {
         std::string input;
-        contact new_contact;
+        Contact     new_contact;
 
-        std::cin.ignore();
         std::cout << "What is your first name?" << std::endl;
         std::getline (std::cin, input);
         new_contact.set_firstname(input);
@@ -60,13 +49,12 @@ contact    add()
         new_contact.set_underwear(input);
         std::cout << "What is your darkest secret?" << std::endl;
         std::getline (std::cin, input);
-        new_contact.set_secret(input);      
-
+        new_contact.set_secret(input);  
+        std::cout << "New contact added." << std::endl;    
         return (new_contact); 
 }
 
-
-void information(contact phonebook[], int index)
+void        information(Contact phonebook[], int index)
 {
     std::string firstname;
     std::string lastname;
@@ -104,81 +92,96 @@ void information(contact phonebook[], int index)
         std::cout << "DARKEST SECRET:" << secret << std::endl;
 }
 
-void    index(contact phonebook[], int contacts)
+void    output(Contact phonebook[], int i)
+{
+    std::string firstname;
+    std::string lastname;
+    std::string nickname;
+
+    firstname = phonebook[i].get_firstname();
+    lastname = phonebook[i].get_lastname();
+    nickname = phonebook[i].get_nickname();
+
+    std::cout << "|" << std::setw(10) << i;
+    if (firstname.length() > 10)
+    {
+        firstname = firstname.substr(0, 9);
+        std::cout << "|" << std::setw(9) << firstname;
+        std::cout << ".";
+    }
+    else if (lastname.length() <= 10)
+        std::cout << "|" << std::setw(10) << lastname;
+    if (lastname.length() > 10)
+    {
+        lastname = lastname.substr(0, 9);
+        std::cout << "|" << std::setw(9) << lastname;
+        std::cout << ".";
+    } 
+    else if (lastname.length() <= 10)
+        std::cout << "|" << std::setw(10) << lastname;
+    if (nickname.length() > 10)
+    {
+        nickname = nickname.substr(0, 9);
+        std::cout << "|" << std::setw(9) << nickname;
+        std::cout << ".";
+    }
+    else if (nickname.length() <= 10)
+        std::cout << "|" << std::setw(10) << nickname;
+    std::cout << "|" << std::endl;
+}
+
+void        valid_index(Contact phonebook[], int contacts, std::string input)
+{
+    int idx;
+
+    if (input.length() > 1)
+    {
+        std::cout << "You have entered a wrong input. Please try again." << std::endl;
+        index(phonebook, contacts);
+    }
+    if (input.length() == 1)
+    {
+        if (std::isdigit(input[0]) == 1)
+        {
+            idx = std::atoi(input.c_str());
+            if (idx >= 0 && idx < contacts)
+                information(phonebook, idx);
+            else if (idx < 0 || idx >= contacts)
+            {
+                std::cout << "You have entered a wrong input. Please try again." << std::endl;
+                index(phonebook, contacts);
+            }
+        }
+        else if (std::isdigit(input[0]) == 0)
+        {
+            std::cout << "You have entered a wrong input. Please try again." << std::endl;
+            index(phonebook, contacts);
+        }
+    }
+}
+
+void        index(Contact phonebook[], int contacts)
 {
     int i;
     int idx;
     std::string firstname;
     std::string lastname;
     std::string nickname;
+    std::string input;
 
     i = 0;
     std::cout << "|" << std::setw(10) << "INDEX";
     std::cout << "|" << std::setw(10) << "FIRST NAME";
     std::cout << "|" << std::setw(10) << "LAST NAME";
-    std::cout << "|" << std::setw(10) << "NICKNAME";
+    std::cout << "|" << std::setw(10) << "NICKNAME" ;
     std::cout << "|" << std::endl;
+   
     while(i < contacts)
     {
-        firstname = phonebook[i].get_firstname();
-        lastname = phonebook[i].get_lastname();
-        nickname = phonebook[i].get_nickname();
-        std::cout << "|" << std::setw(10) << i;
-        std::cout << "|" << std::setw(10) << firstname;
-        std::cout << "|" << std::setw(10) << lastname;
-        std::cout << "|" << std::setw(10) << nickname;
-        std::cout << "|" << std::endl;
+        output(phonebook, i);
         i++;
     }
     std::cout << "Please choose the number of the contact you would like to display:" << std::endl;
-    std::cin >> idx;
-    if (idx < contacts)
-        information(phonebook, idx);
-    else
-    {
-        std::cout << "The number you entered is invalid. Please try again." << std::endl;
-        index(phonebook, contacts);
-    }
-}
-
-int main(void)
-{
-    int i;
-    int j;
-    i = 0;
-    j = 0;
-    
-    std::string command;
-    contact phonebook[8];
-    std::cout << "What is your command? Choose ADD, SEARCH or EXIT:";
-    std::cin >> command;
-    while(command != "EXIT")
-    {
-        if (command == "ADD")
-        {
-            if (i >= 8)
-                std::cout << "Unfortunately the phonebook is full." << std::endl;
-            else if(i < 8)
-            {
-                phonebook[i] = add();
-                i++;
-            }
-        }
-        else if (command == "SEARCH")
-        {
-            if (i > 0)
-                index(phonebook, i);
-            else if (i == 0)
-                std::cout << "Phonebook is empty."<< std::endl;
-        }
-        else if (command == "EXIT")
-            exit(1);
-        else
-            std::cout << "Invalid input. Please try again." << std::endl;
-        std::cout << "What is your command? Choose ADD, SEARCH or EXIT:";
-        std::cin >> command;
-    }
-    if (command == "EXIT")
-        exit(1);
-    return (0);
+    std::getline(std::cin, input);
+    valid_index(phonebook, contacts, input);
 }

@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   contact.hpp                                        :+:    :+:            */
+/*   Contact.class.hpp                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tclement <tclement@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/27 18:35:30 by tclement      #+#    #+#                 */
-/*   Updated: 2020/08/01 14:34:36 by tclement      ########   odam.nl         */
+/*   Updated: 2020/08/05 14:13:51 by tclement      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#ifndef CONTACT_CLASS_HPP
+# define CONTACT_CLASS_HPP
 
 #include <iostream>
 #include <iomanip>
 
-
-class    contact{
+class    Contact{
    public:
-      contact();
-     ~contact();
-
+      Contact();
+     ~Contact();
 
    void				set_firstname(std::string str);
    void				set_lastname(std::string str);
@@ -47,21 +45,23 @@ class    contact{
    std::string		get_secret( ) const;
   
    private:
-    std::string _firstname;
-    std::string _lastname;
-    std::string _nickname;
-    std::string _login;
-    std::string _address;
-    std::string _email;
-    std::string _phone;
-    std::string _birthday;
-    std::string _meal;
-    std::string _underwear;
-    std::string _secret;
+      std::string _firstname;
+      std::string _lastname;
+      std::string _nickname;
+      std::string _login;
+      std::string _address;
+      std::string _email;
+      std::string _phone;
+      std::string _birthday;
+      std::string _meal;
+      std::string _underwear;
+      std::string _secret;
 };
 
-contact  add();
-void     index(contact phonebook[], int contacts);
-void     information(contact phonebook[], int index);
+Contact  add();
+void     valid_index(Contact phonebook[], int contacts, std::string input);
+void     index(Contact phonebook[], int contacts);
+void     information(Contact phonebook[], int index);
+void     output(Contact phonebook[], int i);
 
 #endif
