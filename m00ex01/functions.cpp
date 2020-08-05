@@ -6,7 +6,7 @@
 /*   By: tclement <tclement@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/05 12:50:26 by tclement      #+#    #+#                 */
-/*   Updated: 2020/08/05 14:13:35 by tclement      ########   odam.nl         */
+/*   Updated: 2020/08/05 15:41:46 by tclement      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,40 +17,40 @@ Contact     add()
         std::string input;
         Contact     new_contact;
 
-        std::cout << "What is your first name?" << std::endl;
-        std::getline (std::cin, input);
-        new_contact.set_firstname(input);
-        std::cout << "What is your last name?" << std::endl;
-        std::getline (std::cin, input);
-        new_contact.set_lastname(input);
-        std::cout << "What is your nickname?" << std::endl;
-        std::getline (std::cin, input);
-        new_contact.set_nickname(input);
-        std::cout << "What is your login?" << std::endl;
-        std::getline (std::cin, input);
-        new_contact.set_login(input);
-        std::cout << "What is your postal address?" << std::endl;
-        std::getline (std::cin, input);
-        new_contact.set_address(input);
-        std::cout << "What is your email address?" << std::endl;
-        std::getline (std::cin, input);
-        new_contact.set_email(input);
-        std::cout << "What is your phone number?" << std::endl;
-        std::getline (std::cin, input);
-        new_contact.set_phone(input);
-        std::cout << "What is your date of birth?" << std::endl;
-        std::getline (std::cin, input);
-        new_contact.set_birthday(input);
-        std::cout << "What is your favourite meal?" << std::endl;
-        std::getline (std::cin, input);
-        new_contact.set_meal(input);
-        std::cout << "What is your underwear color?" << std::endl;
-        std::getline (std::cin, input);
-        new_contact.set_underwear(input);
-        std::cout << "What is your darkest secret?" << std::endl;
-        std::getline (std::cin, input);
-        new_contact.set_secret(input);  
-        std::cout << "New contact added." << std::endl;    
+         std::cout << "What is your first name?" << std::endl;
+         std::getline (std::cin, input);
+         new_contact.set_firstname(input);
+         std::cout << "What is your last name?" << std::endl;
+         std::getline (std::cin, input);
+         new_contact.set_lastname(input);
+         std::cout << "What is your nickname?" << std::endl;
+         std::getline (std::cin, input);
+         new_contact.set_nickname(input);
+         std::cout << "What is your login?" << std::endl;
+         std::getline (std::cin, input);
+         new_contact.set_login(input);
+         std::cout << "What is your postal address?" << std::endl;
+         std::getline (std::cin, input);
+         new_contact.set_address(input);
+         std::cout << "What is your email address?" << std::endl;
+         std::getline (std::cin, input);
+         new_contact.set_email(input);
+         std::cout << "What is your phone number?" << std::endl;
+         std::getline (std::cin, input);
+         new_contact.set_phone(input);
+         std::cout << "What is your date of birth?" << std::endl;
+         std::getline (std::cin, input);
+         new_contact.set_birthday(input);
+         std::cout << "What is your favourite meal?" << std::endl;
+         std::getline (std::cin, input);
+         new_contact.set_meal(input);
+         std::cout << "What is your underwear color?" << std::endl;
+         std::getline (std::cin, input);
+         new_contact.set_underwear(input);
+         std::cout << "What is your darkest secret?" << std::endl;
+         std::getline (std::cin, input);
+         new_contact.set_secret(input);  
+         std::cout << "New contact added." << std::endl;   
         return (new_contact); 
 }
 

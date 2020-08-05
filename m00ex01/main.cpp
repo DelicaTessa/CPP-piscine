@@ -6,7 +6,7 @@
 /*   By: tclement <tclement@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/05 12:51:27 by tclement      #+#    #+#                 */
-/*   Updated: 2020/08/05 14:15:11 by tclement      ########   odam.nl         */
+/*   Updated: 2020/08/05 15:22:34 by tclement      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int main(void)
         std::cout << "Goodbye." << std::endl;
         exit(1);
         }
+        else if (std::cin.good() != 1)
+            return (0);
         else
             std::cout << "Invalid input. Please try again." << std::endl;
         std::cout << "What is your command? Choose ADD, SEARCH or EXIT:";
