@@ -6,7 +6,7 @@
 /*   By: tclement <tclement@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/05 14:43:18 by tclement      #+#    #+#                 */
-/*   Updated: 2020/08/05 15:56:02 by tclement      ########   odam.nl         */
+/*   Updated: 2020/08/05 15:57:06 by tclement      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,3 @@ int	Account::getNbWithdrawals( void )
 }
 
 void	displayAccountsInfos( void );
-}
